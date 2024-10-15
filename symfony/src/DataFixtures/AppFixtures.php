@@ -36,9 +36,21 @@ class AppFixtures extends Fixture
         $sc1->setNom("Guitares Electriques");
         $sc1->setImage("");
         $sc1->setParent($c1);
-        // $c1->addCategory($sc1);
-        
         $manager->persist($sc1);
+
+        $sc2 = new Categorie();
+        $sc2->setNom("Guitares classiques");
+        $sc2->setImage("");
+        $sc2->setParent($c1);
+        $manager->persist($sc2);
+
+        $sc3 = new Categorie();
+        $sc3->setNom("Guitares ...");
+        $sc3->setImage("");
+        $sc3->setParent($c1);
+        // $c1->addCategory($sc3);
+        $manager->persist($sc3);
+        
 
 
 
@@ -52,6 +64,28 @@ class AppFixtures extends Fixture
         // $sc1->addProduit($p1);
 
         $manager->persist($p1);
+
+
+        $p2 = new Produit();
+        $p2->setNom("Guitare 2");
+        $p2->setImage("");
+        $p2->setDescription("Elle brille !!!");
+        $p2->setPrix(9999.99);
+        $p2->setCategorie($sc1);
+        // $sc1->addProduit($p2);
+
+        $manager->persist($p2);
+
+
+        $p3 = new Produit();
+        $p3->setNom("Guitare 3");
+        $p3->setImage("");
+        $p3->setDescription("Elle brille !!!");
+        $p3->setPrix(9999.99);
+        $p3->setCategorie($sc1);
+        // $sc1->addProduit($p3);
+
+        $manager->persist($p3);
 
 
         $manager->flush();

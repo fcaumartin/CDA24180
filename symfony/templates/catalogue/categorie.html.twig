@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogueController!{% endblock %}
+
+
+
+{% block body %}
+<div class="row">
+    <h1>Détails de {{categorie.nom}}</h1>
+
+    {% for sousCategorie in categorie.categories %}
+        <div>
+            <a href="/produits/{{sousCategorie.id}}">
+                {{sousCategorie.nom}}
+            </a>
+        </div>
+    {% endfor %}
+    
+
+</div>
+{% endblock %}
