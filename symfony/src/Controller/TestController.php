@@ -2,15 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\Categorie;
 use App\Entity\Produit;
+use App\Entity\Categorie;
 use App\Form\ContactType;
 use App\Form\ProduitType;
+use Symfony\Component\Mime\Email;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TestController extends AbstractController
 {
@@ -37,7 +39,7 @@ class TestController extends AbstractController
     }
 
     #[Route('/form', name: 'app_form')]
-    public function form(Request $request, EntityManagerInterface $manager): Response
+    public function form(Request $request, MailerInterface $mailer): Response
     {
         
         $form = $this->createForm(ContactType::class);
@@ -49,15 +51,21 @@ class TestController extends AbstractController
 
             $sujet = $data["sujet"];
             $message = $data["message"];
-            $test = $data["test"];
+            $from = $data["from"];
 
-            $cat = new Categorie();
-            $cat->setNom($sujet);
-            $cat->setImage($message);
+            $email = new Email();
 
-            $manager->persist($cat);
-            $manager->flush();
+            $email->from($from);
+            $email->to('admin@villagegreen.com');
+            $email->subject($sujet);
+            $email->text($message);
+            $email->html("<p>$message</p>");
 
+            $mailer->send($email);
+
+
+
+            
             return $this->redirect("/");
         }
 

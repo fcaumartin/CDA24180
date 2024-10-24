@@ -1,6 +1,7 @@
-formulaire
-connexion (rôle)
-mail
+- formulaire
+- connexion (rôle)
+- mail
+dql
 pdf
 stripe
 tests unitaires

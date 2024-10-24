@@ -18,17 +18,18 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('from', TextType::class)
             ->add('sujet', TextType::class)
             ->add('message', TextareaType::class)
 
-            ->add('test', NumberType::class, [
-                "invalid_message" => "C'est pas bon !!!",
-                "required" => false,
-                "constraints" => [
-                    new NotBlank(["message" => "obligatoire !!!"]),
-                    new Length(['min' => 3, "minMessage" => "trop petit"]),
-                ]
-            ])
+            // ->add('test', NumberType::class, [
+            //     "invalid_message" => "C'est pas bon !!!",
+            //     "required" => false,
+            //     "constraints" => [
+            //         new NotBlank(["message" => "obligatoire !!!"]),
+            //         new Length(['min' => 3, "minMessage" => "trop petit"]),
+            //     ]
+            // ])
 
             ->add('Envoyer', SubmitType::class)
         ;
