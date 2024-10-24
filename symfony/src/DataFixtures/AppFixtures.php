@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Categorie;
 use App\Entity\Produit;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -87,6 +88,16 @@ class AppFixtures extends Fixture
 
         $manager->persist($p3);
 
+
+        $u1 = new User();
+        $u1->setEmail("toto@afpa.fr");
+        $u1->setRoles(['ROLE_USER', 'ROLE_ADMIN', 'ROLE_GESTION']);
+        $u1->setPassword("1234");
+        $u1->setPrenom("To");
+        $u1->setNom("To");
+        $u1->setAdresse("To");
+
+        $manager->persist($u1);
 
         $manager->flush();
     }
