@@ -6,6 +6,7 @@
 {% for produit in panier %}
     <div>
         {{produit.nom}}
+        {{ {% trans %}livre{% endtrans %}}}
     </div>
 {% endfor %}
 {% endblock %}
