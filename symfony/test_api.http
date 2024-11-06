@@ -1,0 +1,58 @@
+GET https://127.0.0.1:8000/api/produits
+Accept: application/json
+
+###
+
+GET https://127.0.0.1:8000/api/produits/7
+Accept: application/json
+
+
+###
+
+POST https://127.0.0.1:8000/api/produits
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nom": "Guitare test",
+  "image": "",
+  "description": "test",
+  "prix": "12.55",
+  "categorie": "/api/categories/1"
+}
+
+###
+
+
+DELETE https://127.0.0.1:8000/api/produits/5
+Accept: application/json
+
+
+###
+
+
+
+PATCH https://127.0.0.1:8000/api/produits/7
+Accept: application/json
+Content-Type: application/merge-patch+json
+
+{
+  "image": "test"
+}
+
+###
+
+
+PUT https://127.0.0.1:8000/api/produits/7
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nom": "Guitare test",
+  "image": "",
+  "description": "test",
+  "prix": "12.55",
+  "categorie": "/api/categories/1"
+}
+
+###

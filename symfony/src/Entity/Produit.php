@@ -2,22 +2,28 @@
 
 namespace App\Entity;
 
-use App\Repository\ProduitRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use App\Repository\ProduitRepository;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
+#[ApiResource(normalizationContext: ['groups' => ['produit:lecture']])]
 class Produit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['produit:lecture'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['produit:lecture'])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['produit:lecture'])]
     private ?string $image = null;
 
     #[ORM\Column(length: 255)]
@@ -28,6 +34,7 @@ class Produit
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['produit:lecture'])]
     private ?Categorie $categorie = null;
 
     public function getId(): ?int
