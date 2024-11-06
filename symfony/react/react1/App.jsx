@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div>
       <h1 className="rouge">Titre2</h1>
-      Coucou
+      Coucou test
       <hr />
       {nom}
       <hr />
