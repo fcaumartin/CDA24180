@@ -30,6 +30,7 @@ class Produit
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    #[Groups(['produit:lecture'])]
     private ?string $prix = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]

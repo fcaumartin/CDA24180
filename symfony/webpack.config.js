@@ -24,6 +24,7 @@ Encore
     .addEntry('react1', './react/react1/index.js')
     .addEntry('react2', './react/react2/index.js')
     .addEntry('react3', './react/react3/index.js')
+    .addEntry('react4', './react/react4/index.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
