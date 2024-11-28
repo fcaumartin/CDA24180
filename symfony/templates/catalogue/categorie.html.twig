@@ -9,7 +9,7 @@
     <h1>Détails de {{categorie.nom}}</h1>
 
     {% for sousCategorie in categorie.categories %}
-        <div>
+        <div class="categorie">
             <a href="/produits/{{sousCategorie.id}}">
                 {{sousCategorie.nom}}
             </a>
